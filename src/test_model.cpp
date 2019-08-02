@@ -29,7 +29,7 @@ int main()
     ldmarkmodel modelt;
     std::string modelFilePath = "roboman-landmark-model.bin";
     while(!load_ldmarkmodel(modelFilePath, modelt)){
-        std::cout << "文件打开错误，请重新输入文件路径." << std::endl;
+        std::cout << "." << std::endl;
         std::cin >> modelFilePath;
     }
 
