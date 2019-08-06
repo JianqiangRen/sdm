@@ -71,11 +71,11 @@ int main(int argc, char* argv[])
     std::string outPath = argv[2];
     cv::Mat img = cv::imread(testPath);
 
-    Face faceManager  = Face();
-    faceManager.init("data/mod/actor/roboman-landmark-model.bin");
+
+    Face::init("data/mod/actor/roboman-landmark-model.bin");
     vector<cv::Rect> faceRects;
     vector<cv::Mat> landmarkMats;
-    faceManager.detect(img,faceRects, landmarkMats);
+    Face::detect(img,faceRects, landmarkMats);
 
     for(int i=0; i < faceRects.size(); ++i)
     {
