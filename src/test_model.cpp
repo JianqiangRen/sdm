@@ -69,6 +69,24 @@ int main(int argc, char* argv[])
     cv::Mat img = cv::imread(testPath);
 
     Face::init("../example/roboman-landmark-model.bin");
+
+    cv::Rect faceRect;
+    cv::Mat landmarkMat;
+    Face::detect(img,faceRect, landmarkMat);
+
+    int numLandmarks = landmarkMat.cols/2;
+    for(int j=0; j<numLandmarks; j++){
+        int x = landmarkMat.at<float>(j);
+        int y =landmarkMat.at<float>(j + numLandmarks);
+        std::stringstream ss;
+        ss << j;
+//            cv::putText(Image, ss.str(), cv::Point(x, y), 0.5, 0.5, cv::Scalar(0, 0, 255));
+        cv::circle(img, cv::Point(x, y), 2, cv::Scalar(0, 0, 255), -1);
+    }
+    cv::imwrite("out1.png", img);
+
+    img = cv::imread(testPath);
+
     vector<cv::Rect> faceRects;
     vector<cv::Mat> landmarkMats;
     Face::detect(img,faceRects, landmarkMats);

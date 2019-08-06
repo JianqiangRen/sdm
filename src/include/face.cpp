@@ -19,10 +19,19 @@ int Face::init(const string modelFilePath)
      }
 }
 
+int Face::detect(cv::Mat& src, cv::Rect& faceRect, cv::Mat& landmarkMat)
+{
+    int ret =  Face::markModel->track(src,landmarkMat);
+    std::cout<<"ret1:"<<ret<<std::endl;
+    if(ret < 400)
+        return 0;
+    return ret;
+}
+
 int Face::detect(cv::Mat& src, std::vector<cv::Rect>& faceRects, std::vector<cv::Mat>& landmarkMats)
 {
     int ret =  Face::markModel->track(src,faceRects,landmarkMats);
-    std::cout<<"ret:"<<ret<<std::endl;
+    std::cout<<"ret2:"<<ret<<std::endl;
     if(ret < 400)
         return 0;
     return ret;

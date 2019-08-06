@@ -16,6 +16,7 @@ public:
     static int init(const string modelFilePath);
     static int formatLandMarks(cv::Mat& marksMat, std::vector<cv::Point>& landmarks);
     static int detect(cv::Mat& src, vector<cv::Rect>& faceRects, vector<cv::Mat>& landmarkMats);
+    static int detect(cv::Mat& src, cv::Rect& faceRects, cv::Mat& landmarkMats);
     static int buffing(const cv::Mat& src, const cv::Rect& faceRect, const std::vector<cv::Point>& landmarks, cv::Mat& dst);
 
 private:
