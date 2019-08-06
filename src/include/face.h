@@ -22,5 +22,5 @@ private:
     static ldmarkmodel* markModel;
 };
 
-
+#include "face.cpp"
 #endif //FILTER_FACE_H

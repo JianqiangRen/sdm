@@ -25,7 +25,7 @@ set(OpenCV_LIBS opencv_core opencv_imgproc opencv_highgui opencv_gpu opencv_flan
 #TARGET_LINK_LIBRARIES(SDM ${OpenCV_LIBS})
 
 
-ADD_EXECUTABLE(SDM-TEST src/test_model.cpp ${SOURCES_FILE})
+ADD_EXECUTABLE(SDM-TEST src/test_model.cpp)
 TARGET_LINK_LIBRARIES(SDM-TEST ${OpenCV_LIBS})
 
 

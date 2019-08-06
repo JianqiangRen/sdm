@@ -10,9 +10,13 @@ int Face::init(const string modelFilePath)
     Face::markModel = new ldmarkmodel();
     if(load_ldmarkmodel(modelFilePath,  *Face::markModel))
     {
+		std::cout<<"load model success"<<endl;
         return 0;
     } else
+	{
+		std::cout<<"load model error"<<endl;
         return 1;
+     }
 }
 
 int Face::detect(cv::Mat& src, std::vector<cv::Rect>& faceRects, std::vector<cv::Mat>& landmarkMats)

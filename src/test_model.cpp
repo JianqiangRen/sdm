@@ -8,11 +8,8 @@
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/objdetect/objdetect.hpp"
 #include "face.h"
-#define  TEST
-
+#define  TEST 
 #ifdef NORMAL
-
-#include "ldmarkmodel.h"
 
 using namespace std;
 using namespace cv;
@@ -71,12 +68,11 @@ int main(int argc, char* argv[])
     std::string outPath = argv[2];
     cv::Mat img = cv::imread(testPath);
 
-
-    Face::init("data/mod/actor/roboman-landmark-model.bin");
+    Face::init("../example/roboman-landmark-model.bin");
     vector<cv::Rect> faceRects;
     vector<cv::Mat> landmarkMats;
     Face::detect(img,faceRects, landmarkMats);
-
+    cout<<"facerects size:"<<faceRects.size()<<endl;
     for(int i=0; i < faceRects.size(); ++i)
     {
         int numLandmarks = landmarkMats[i].cols/2;
