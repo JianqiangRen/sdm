@@ -6,7 +6,6 @@
 #define FILTER_FACE_H
 
 #include "ldmarkmodel.h"
-#include "opencv2/opencv.hpp"
 
 using namespace std;
 
@@ -14,7 +13,7 @@ using namespace std;
 class Face {
 
 public:
-    static int init(string modelFilePath);
+    static int init(const string modelFilePath);
     static int formatLandMarks(cv::Mat& marksMat, std::vector<cv::Point>& landmarks);
     static int detect(cv::Mat& src, vector<cv::Rect>& faceRects, vector<cv::Mat>& landmarkMats);
     static int buffing(const cv::Mat& src, const cv::Rect& faceRect, const std::vector<cv::Point>& landmarks, cv::Mat& dst);
