@@ -20,7 +20,7 @@ public:
     static int buffing(const cv::Mat& src, const cv::Rect& faceRect, const std::vector<cv::Point>& landmarks, cv::Mat& dst);
 
 private:
-    static ldmarkmodel* markModel;
+    static ldmarkmodel markModel;
 };
 
 #include "face.cpp"

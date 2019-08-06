@@ -3,12 +3,12 @@
 //
 
 #include "face.h"
-ldmarkmodel* Face::markModel = nullptr;
+ldmarkmodel Face::markModel;
 
 int Face::init(const string modelFilePath)
 {
     Face::markModel = new ldmarkmodel();
-    if(load_ldmarkmodel(modelFilePath,  *Face::markModel))
+    if(load_ldmarkmodel(modelFilePath,  Face::markModel))
     {
 		std::cout<<"load model success"<<endl;
         return 0;
@@ -21,7 +21,7 @@ int Face::init(const string modelFilePath)
 
 int Face::detect(cv::Mat& src, cv::Rect& faceRect, cv::Mat& landmarkMat)
 {
-    int ret =  Face::markModel->track(src,landmarkMat);
+    int ret =  Face::markModel.track(src,landmarkMat);
     std::cout<<"ret1:"<<ret<<std::endl;
     if(ret < 400)
         return 0;
@@ -30,7 +30,7 @@ int Face::detect(cv::Mat& src, cv::Rect& faceRect, cv::Mat& landmarkMat)
 
 int Face::detect(cv::Mat& src, std::vector<cv::Rect>& faceRects, std::vector<cv::Mat>& landmarkMats)
 {
-    int ret =  Face::markModel->track(src,faceRects,landmarkMats);
+    int ret =  Face::markModel.track(src,faceRects,landmarkMats);
     std::cout<<"ret2:"<<ret<<std::endl;
     if(ret < 400)
         return 0;
