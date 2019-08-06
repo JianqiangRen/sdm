@@ -7,6 +7,10 @@
 #include "opencv2/core/core.hpp"
 #include "opencv2/highgui/highgui.hpp"
 #include "opencv2/objdetect/objdetect.hpp"
+#include "face.h"
+#define  TEST
+
+#ifdef NORMAL
 
 #include "ldmarkmodel.h"
 
@@ -50,10 +54,47 @@ int main(int argc, char* argv[])
 }
 
 
+#endif
+
+
+#ifdef TEST
 
 
 
+using namespace std;
+using namespace cv;
 
+
+int main(int argc, char* argv[])
+{
+    std::string testPath = argv[1];
+    std::string outPath = argv[2];
+    cv::Mat img = cv::imread(testPath);
+
+    Face faceManager  = Face();
+    faceManager.init("data/mod/actor/roboman-landmark-model.bin");
+    vector<cv::Rect> faceRects;
+    vector<cv::Mat> landmarkMats;
+    faceManager.detect(img,faceRects, landmarkMats);
+
+    for(int i=0; i < faceRects.size(); ++i)
+    {
+        int numLandmarks = landmarkMats[i].cols/2;
+        for(int j=0; j<numLandmarks; j++){
+            int x = landmarkMats[i].at<float>(j);
+            int y = landmarkMats[i].at<float>(j + numLandmarks);
+            std::stringstream ss;
+            ss << j;
+//            cv::putText(Image, ss.str(), cv::Point(x, y), 0.5, 0.5, cv::Scalar(0, 0, 255));
+            cv::circle(img, cv::Point(x, y), 2, cv::Scalar(0, 0, 255), -1);
+        }
+    }
+    cv::imwrite(outPath, img);
+    return 0;
+}
+
+
+#endif
 
 
 

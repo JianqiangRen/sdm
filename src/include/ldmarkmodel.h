@@ -23,19 +23,19 @@
 
 
 
-#define SDM_NO_ERROR        0       //ÎÞ´íÎó
-#define SDM_ERROR_FACEDET   200     //ÖØÐÂÍ¨¹ýCascadeClassifier¼ì²âµ½ÈËÁ³
-#define SDM_ERROR_FACEPOS   201     //ÈËÁ³Î»ÖÃ±ä»¯½Ï´ó£¬¿ÉÒÉ
-#define SDM_ERROR_FACESIZE  202     //ÈËÁ³´óÐ¡±ä»¯½Ï´ó£¬¿ÉÒÉ
-#define SDM_ERROR_FACENO    203     //ÕÒ²»µ½ÈËÁ³
-#define SDM_ERROR_IMAGE     204     //Í¼Ïñ´íÎó
+#define SDM_NO_ERROR        0       //ï¿½Þ´ï¿½ï¿½ï¿½
+#define SDM_ERROR_FACEDET   200     //ï¿½ï¿½ï¿½ï¿½Í¨ï¿½ï¿½CascadeClassifierï¿½ï¿½âµ½ï¿½ï¿½ï¿½ï¿½
+#define SDM_ERROR_FACEPOS   201     //ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã±ä»¯ï¿½Ï´ó£¬¿ï¿½ï¿½ï¿½
+#define SDM_ERROR_FACESIZE  202     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ä»¯ï¿½Ï´ó£¬¿ï¿½ï¿½ï¿½
+#define SDM_ERROR_FACENO    203     //ï¿½Ò²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+#define SDM_ERROR_IMAGE     204     //Í¼ï¿½ï¿½ï¿½ï¿½ï¿½
 
-#define SDM_ERROR_ARGS      400     //²ÎÊý´«µÝ´íÎó
-#define SDM_ERROR_MODEL     401     //Ä£ÐÍ¼ÓÔØ´íÎó
+#define SDM_ERROR_ARGS      400     //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ý´ï¿½ï¿½ï¿½
+#define SDM_ERROR_MODEL     401     //Ä£ï¿½Í¼ï¿½ï¿½Ø´ï¿½ï¿½ï¿½
 
 
 
-//»Ø¹éÆ÷Àà
+//ï¿½Ø¹ï¿½ï¿½ï¿½ï¿½ï¿½
 class LinearRegressor{
 
 public:
@@ -85,6 +85,7 @@ public:
 
     cv::Mat predict(const cv::Mat& src);
 
+    int  track(const cv::Mat& src, std::vector<cv::Rect>& rects,  std::vector<cv::Mat>& current_shapes, bool isDetFace=false);
     int  track(const cv::Mat& src, cv::Mat& current_shape, bool isDetFace=false);
 
     void printmodel();
@@ -125,10 +126,10 @@ private:
     }
 };
 
-//¼ÓÔØÄ£ÐÍ
+//ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
 bool load_ldmarkmodel(std::string filename, ldmarkmodel &model);
 
-//±£´æÄ£ÐÍ
+//ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½
 void save_ldmarkmodel(ldmarkmodel model, std::string filename);
 
 
