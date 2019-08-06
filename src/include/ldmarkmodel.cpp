@@ -427,7 +427,7 @@ int ldmarkmodel::track(const cv::Mat& src, std::vector<cv::Rect>& rects,  std::v
 //    }
     if(true){
         std::vector<cv::Rect> mFaceRects;
-        face_cascade.detectMultiScale(grayImage, mFaceRects, 1.3, 3, 0, cv::Size(100, 100));
+        face_cascade.detectMultiScale(grayImage, mFaceRects, 1.3, 3, 0, cv::Size(30, 30));
         if(mFaceRects.size() <=0){
             current_shape = cv::Mat();
             return SDM_ERROR_FACENO;

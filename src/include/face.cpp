@@ -7,7 +7,7 @@ ldmarkmodel Face::markModel;
 
 int Face::init(const string modelFilePath)
 {
-    Face::markModel = new ldmarkmodel();
+    Face::markModel = ldmarkmodel();
     if(load_ldmarkmodel(modelFilePath,  Face::markModel))
     {
 		std::cout<<"load model success"<<endl;
