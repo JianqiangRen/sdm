@@ -3,7 +3,6 @@
 //
 
 #include "face.h"
-#include "filter_utils.h"
 ldmarkmodel* Face::markModel = nullptr;
 
 int Face::init(const string modelFilePath)
@@ -11,7 +10,6 @@ int Face::init(const string modelFilePath)
     Face::markModel = new ldmarkmodel();
     if(load_ldmarkmodel(modelFilePath,  *Face::markModel))
     {
-        FilterUtils::printInfo("face model load success");
         return 0;
     } else
         return 1;
@@ -77,7 +75,7 @@ int Face::buffing(const cv::Mat &src,
     if(blur_amount%2 ==0)
         blur_amount +=1;
 
-    cv::GaussianBlur(mask,mask,Size(blur_amount,blur_amount), 0);
+    cv::GaussianBlur(mask,mask,cv::Size(blur_amount,blur_amount), 0);
 
     return 0;
 }

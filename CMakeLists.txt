@@ -20,12 +20,12 @@ set(CMAKE_C_FLAGS " -std=c++0x -g -Wall -W   -march=core2 -O -fomit-frame-pointe
 
 set(LIBRARY_OUTPUT_PATH  ${PROJECT_SOURCE_DIR})
 set(OpenCV_LIBS opencv_core opencv_imgproc opencv_highgui opencv_gpu opencv_flann opencv_objdetect opencv_calib3d)
-add_library(SDM SHARED src/include/ldmarkmodel.cpp)
+#add_library(SDM SHARED src/include/ldmarkmodel.cpp)
 
-TARGET_LINK_LIBRARIES(SDM ${OpenCV_LIBS})
+#TARGET_LINK_LIBRARIES(SDM ${OpenCV_LIBS})
 
 
-ADD_EXECUTABLE(SDM-TEST src/test_model.cpp)
+ADD_EXECUTABLE(SDM-TEST src/test_model.cpp ${SOURCES_FILE})
 TARGET_LINK_LIBRARIES(SDM-TEST ${OpenCV_LIBS})
 
 
